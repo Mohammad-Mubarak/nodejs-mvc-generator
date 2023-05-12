@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-mvc-generator",
+  "version": "1.0.0",
+  "description": "this package will generate mvc pattern template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mvc",
+    "nodejs mvc",
+    "express mvc"
+  ],
+  "author": "Md Mubarak khan",
+  "license": "ISC"
+}
