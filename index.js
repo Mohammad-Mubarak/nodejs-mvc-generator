@@ -2,17 +2,13 @@ const { exec } = require("child_process");
 const fs = require("fs");
 
 async function runpackage(...packagesToinstall) {
-	
-    // =========================function which create file and folder
+	// =========================function which create file and folder
 	async function createFolderAndFile(folderName, fileName, fileContent) {
 		try {
 			const fsm = require("fs").promises;
 			await fsm.mkdir(folderName);
 			const filePath = `${folderName}/${fileName}`;
 			await fsm.writeFile(filePath, fileContent);
-			console.log(
-				`Folder '${folderName}' and file '${fileName}' created successfully.`
-			);
 		} catch (error) {
 			console.error(`Error creating folder or file: ${error.message}`);
 		}
@@ -80,10 +76,8 @@ module.exports = MyProduct
     `;
 	createFolderAndFile(foldermodal, filemodal, modalcontent);
 
-
-
-    //  <=======================================utils =====================================================>
-    const folderRoute = "routes";
+	//  <=======================================utils =====================================================>
+	const folderRoute = "routes";
 	const fileroute = "route.js";
 	const routecontent = `
 const express = require('express')
@@ -99,25 +93,40 @@ module.exports = router
     `;
 	createFolderAndFile(folderRoute, fileroute, routecontent);
 
-
-
-    //  <=======================================utils =====================================================>
+	//  <=======================================utils =====================================================>
 	const folderMidelware = "middlewares";
-    const filermidelware = "middle.js";
-	const midelware = ``
+	const filermidelware = "middle.js";
+	const midelware = ``;
 	createFolderAndFile(folderMidelware, filermidelware, midelware);
 
+	//  <=======================================public folder =====================================================>
 
-    //  <=======================================public folder =====================================================>
-    const folderpubic = "public";
-    const filepublic = "index.html";
-	const contentpublic = ``
-	createFolderAndFile(folderpubic, filepublic, contentpublic);
+	async function FolderAndFile(folderName, fileName, fileContent) {
+		try {
+			const fsm = require("fs").promises;
+			await fsm.mkdir(folderName);
+			const filePath = `${folderName}/${fileName}`;
+			await fsm.writeFile(filePath, fileContent);
 
+			// Create subfolders inside the public folder
+			const subfolders = ["html", "css", "js"];
+			for (const subfolder of subfolders) {
+				const subfolderPath = `${folderName}/${subfolder}`;
+				await fsm.mkdir(subfolderPath);
+			}
+		} catch (error) {
+			console.error(`Error creating folder or file: ${error.message}`);
+		}
+	}
+	const folderpublic = "public";
+	const filepublic = "index.html";
+	const contentpublic = "";
+
+	FolderAndFile(folderpublic, filepublic, contentpublic);
 
 	// <<<<<<<<<<<<<================= Installing packages ==============================>>>>>>>>>>>
 
-	 function installPackage(packageName) {
+	function installPackage(packageName) {
 		return new Promise((resolve, reject) => {
 			exec(`npm install ${packageName}`, (error, stdout, stderr) => {
 				if (error) {
@@ -133,16 +142,16 @@ module.exports = router
 		});
 	}
 
-		try {
-            for(let i=0;i<packagesToinstall.length;i++){
+	try {
+		for (let i = 0; i < packagesToinstall.length; i++) {
 			const result = await installPackage(packagesToinstall[i]);
-             console.log(result);
-            }
-	
-		} catch (error) {
-			console.error(error.message);
+			console.log(result);
 		}
+	} catch (error) {
+		console.error(error.message);
+	}
 }
+
 
 
 module.exports = runpackage;
