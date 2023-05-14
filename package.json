@@ -1,6 +1,6 @@
 {
   "name": "nodejs-mvc-generator",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "this package will generate mvc pattern template",
   "main": "index.js",
   "repository": {

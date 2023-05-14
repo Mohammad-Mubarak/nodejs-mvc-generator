@@ -2,8 +2,6 @@
 # nodejs-mvc-generator
 
 
-
-
 ## Installation
 
 ```bash
@@ -17,10 +15,13 @@ npm install nodejs-mvc-generator
 const mvc = require("nodejs-mvc-generator")
 
 //->Step 1 write all packages you want to install 
-mvc("dotenv","express","morgan")
+mvc("dotenv","express","morgan")  
+
+//->Warning just run this function only once 
+//-. After running once remove it 
 
 
-//->step 2 run file once i will generate all codes and install packages you mentioned
+//->step 2 run file once it will generate all codes and Folder and install packages you mentioned
 
 
 //-> step 3 clear require and function
@@ -29,5 +30,5 @@ mvc("dotenv","express","morgan")
 
 ## Result  Screenshots 
 
-![image](https://res.cloudinary.com/dromvfu7p/image/upload/v1684002557/Screenshot_2023-05-13_235707_bf0xtj.png)
+![image](https://res.cloudinary.com/dromvfu7p/image/upload/v1684039985/Screenshot_2023-05-14_102128_omnxwq.png)
 

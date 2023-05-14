@@ -142,6 +142,30 @@ module.exports = router
 		});
 	}
 
+
+
+// <=========================================dotenv and .ignore ====================================>>>>>>>>>>>
+	async function RootFolderEnv() {
+		try {
+			const fs = require("fs").promises;
+			const rootFolderPath = __dirname; // Assumes current file is in the root folder
+
+			// Create .env file
+			const envFilePath = `${rootFolderPath}/.env`;
+			await fs.writeFile(envFilePath, "");
+
+			// Create .ignore file
+			const ignoreFilePath = `${rootFolderPath}/.gitignore`;
+			await fs.writeFile(ignoreFilePath, "");
+
+			console.log("Files created successfully.");
+		} catch (error) {
+			console.error(`Error creating files: ${error.message}`);
+		}
+	}
+
+    RootFolderEnv();
+
 	try {
 		for (let i = 0; i < packagesToinstall.length; i++) {
 			const result = await installPackage(packagesToinstall[i]);
@@ -152,6 +176,5 @@ module.exports = router
 	}
 }
 
-
-
 module.exports = runpackage;
+
